@@ -18,9 +18,6 @@ public class Department extends Audit<Department> {
 
     private String departmentName;
 
-    @OneToOne
-    @JoinColumn(name = "head_id")
-    private User head;
 
     @ManyToMany(mappedBy = "departments" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore

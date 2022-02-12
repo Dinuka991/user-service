@@ -3,6 +3,7 @@ package com.user.management.modal;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,13 +11,13 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
 public class User extends Audit<User> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
     private String userName;
 
     @ManyToOne
@@ -24,11 +25,9 @@ public class User extends Audit<User> {
     private UserRole userRole;
 
 
-    @ManyToOne
-    @JoinColumn(name = "manager_id")
-    private User manager;
 
     @ManyToMany
+    @ToString.Exclude
     private List<Department> departments;
 
 
